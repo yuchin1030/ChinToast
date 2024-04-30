@@ -21,7 +21,4 @@ public:
 
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
-	UPROPERTY(EditDefaultsOnly)
-	class U
-
 };
