@@ -20,6 +20,7 @@ protected:
 	
 	virtual void BeginPlay() override;
 
+
 public:	
 
 	virtual void Tick(float DeltaTime) override;
@@ -32,7 +33,6 @@ public:
 	// VR카메라 컴포넌트를 생성.
 	UPROPERTY(EditDefaultsOnly, Category = "MySettings")
 	class UCameraComponent* cameraComp;
-
 
 
 	// 왼손, 오른손 컨트롤러 컴포넌트 생성
@@ -65,5 +65,13 @@ public:
 	UPROPERTY(EditDefaultsOnly, Category = "VR")
 	class UInputAction* IA_Move;
 
+	UPROPERTY(EditDefaultsOnly, Category = "VR")
+	class UInputAction* IA_Turn;
+
+
 	void OnIAMove(const FInputActionValue& value);
+	void OnIATurn(const FInputActionValue& value);
+
+
+
 };

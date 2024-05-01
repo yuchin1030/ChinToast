@@ -6,6 +6,8 @@
 #include <../../../../../../../Plugins/EnhancedInput/Source/EnhancedInput/Public/EnhancedInputSubsystems.h>
 
 
+
+
 AVRPlayer::AVRPlayer()
 {
  
@@ -58,6 +60,8 @@ AVRPlayer::AVRPlayer()
 		//(Pitch=25.000000,Yaw=0.000000,Roll=89.999999)
 	}
 
+
+
 }
 
 
@@ -98,16 +102,27 @@ void AVRPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 	if (input)
 	{
 		input->BindAction(IA_Move, ETriggerEvent::Triggered, this, &AVRPlayer::OnIAMove);
-
+		input->BindAction(IA_Turn, ETriggerEvent::Triggered, this, &AVRPlayer::OnIATurn);
 	}
-
+	
 }
 
+// 플레이어의 상하좌우를 움직이게 하는 함수
 void AVRPlayer::OnIAMove(const FInputActionValue& value)
 {
 	FVector2D PlayerDir = value.Get<FVector2D>();
-	AddMovementInput(GetActorForwardVector(),PlayerDir.X);
 	AddMovementInput(GetActorForwardVector(),PlayerDir.Y);
+	AddMovementInput(GetActorRightVector(),PlayerDir.X);
 
 }
+
+// 플레이어의 시야에 맞춰 회전하는 함수
+void AVRPlayer::OnIATurn(const FInputActionValue& value)
+{
+	float v = value.Get<float>();
+	AddControllerYawInput(v);
+}
+
+
+
 
