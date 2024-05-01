@@ -68,9 +68,17 @@ public:
 	UPROPERTY(EditDefaultsOnly, Category = "VR")
 	class UInputAction* IA_Turn;
 
+	UPROPERTY(EditDefaultsOnly, Category = "VR")
+	class UInputAction* IA_Grab_Left;
+
+	UPROPERTY(EditDefaultsOnly, Category = "VR")
+	class UInputAction* IA_Grab_Right;
+
 
 	void OnIAMove(const FInputActionValue& value);
 	void OnIATurn(const FInputActionValue& value);
+	void OnIAGrab_Left(const FInputActionValue& value);
+	void OnIAGrab_Right(const FInputActionValue& value);
 
 
 

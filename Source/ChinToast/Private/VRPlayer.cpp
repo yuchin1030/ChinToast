@@ -33,6 +33,12 @@ AVRPlayer::AVRPlayer()
 	meshLeft->SetupAttachment(motionLeft);
 	meshRight->SetupAttachment(motionRight);
 
+
+
+	
+
+
+
 	// 왼손, 오른손 스켈레탈 메시 로드해서 적용하고싶다.
 	// 왼손 
 	ConstructorHelpers::FObjectFinder<USkeletalMesh>TempMeshLeft(TEXT("/Script/Engine.SkeletalMesh'/Game/Characters/MannequinsXR/Meshes/SKM_MannyXR_left.SKM_MannyXR_left'"));
@@ -121,6 +127,16 @@ void AVRPlayer::OnIATurn(const FInputActionValue& value)
 {
 	float v = value.Get<float>();
 	AddControllerYawInput(v);
+}
+
+void AVRPlayer::OnIAGrab_Left(const FInputActionValue& value)
+{
+
+}
+
+void AVRPlayer::OnIAGrab_Right(const FInputActionValue& value)
+{
+
 }
 
 
