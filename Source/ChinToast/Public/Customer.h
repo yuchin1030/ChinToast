@@ -33,33 +33,60 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 	// 고객 종류에 따라 바뀔 메쉬 저장용
-	UPROPERTY(EditDefaultsOnly)
+	UPROPERTY(EditDefaultsOnly, Category = "Setting")
 	TArray <USkeletalMesh*> bodys;
 
+	// 고객 종류에 따라 바뀔 ABP 저장용
+	UPROPERTY(EditDefaultsOnly, Category = "Setting")
+	TArray <UClass*> customerMoves;
+
 	// 손에 들고갈 샌드위치 매쉬
-	UPROPERTY(EditDefaultsOnly)
+	UPROPERTY(EditDefaultsOnly, Category = "Setting")
 	class UStaticMeshComponent* sandwich;
 
 	// 수령확인 후 인사 애니몽타주
-	UPROPERTY(EditDefaultsOnly)
+	UPROPERTY(EditDefaultsOnly, Category = "Setting")
 	TArray <UAnimMontage*> thanks;
 
 	// FSM 상태변수
-	UPROPERTY(EditDefaultsOnly)
+	UPROPERTY(EditDefaultsOnly, Category = "Setting")
 	ECustomerState state = ECustomerState::IDLE;
 
 	// 주문할 샌드위치 레시피 재료 순서
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, Category = "Setting")
 	TArray<UStaticMesh*> recipe;
 
 	// 고객 종류(매쉬 타입)
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, Category = "Setting")
 	int32 customerType = 0;
+
+	// 이동용 좌표
+	UPROPERTY(EditAnywhere, Category = "Setting")
+	FVector moveLoc = FVector::ZeroVector;
+
+	// 회전 경로
+	UPROPERTY(EditAnywhere, Category = "Setting")
+	FRotator moveRot = FRotator::ZeroRotator;
+
+	// 나가는 경로
+	UPROPERTY(EditAnywhere, Category = "Setting")
+	FVector endLoc = FVector::ZeroVector;
+
+	// 회전 경로
+	UPROPERTY(EditAnywhere, Category = "Setting")
+	FRotator endRot = FRotator::ZeroRotator;
+
+	UPROPERTY(EditAnywhere, Category = "Setting")
+	bool orderSuccess = false;
 
 private:
 
+	FVector startLoc;
+	FRotator startRot;
 	float ticktime = 0.0f;
 	
+	void RandomCustomerSet();
+
 	void Idle();
 	void MoveIn();
 	void Order();
