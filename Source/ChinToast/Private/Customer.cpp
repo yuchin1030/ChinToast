@@ -65,7 +65,7 @@ void ACustomer::RandomCustomerSet()
 	int32 ranNum = FMath::RandRange(0, 2);
 
 	GetMesh()->SetSkeletalMesh(bodys[ranNum]);
-
+	GetMesh()->SetRelativeLocation(FVector(0,0,-90));
 	GetMesh()->SetRelativeRotation(FRotator(0.0f, -90.0f, 0.0f));
 
 	GetMesh()->SetAnimInstanceClass(customerMoves[ranNum]);
@@ -94,7 +94,7 @@ void ACustomer::MoveIn()
 		FRotator MoveSetRot = FMath::Lerp(GetActorRotation(), moveRot, 0.1);
 		SetActorLocation(MoveSetLoc);
 		SetActorRotation(MoveSetRot);
-		if (ticktime > 1.0f)
+		if (ticktime > 0.5f)
 		{
 			ticktime = 0;
 			UE_LOG(LogTemp,Warning,TEXT("Success"));
@@ -114,6 +114,7 @@ void ACustomer::Wait()
 {
 	if (ticktime > 10.0f)
 	{
+		ticktime = 0;
 		UE_LOG(LogTemp, Warning, TEXT("Time Over"));
 		state = ECustomerState::CHECK;
 	}
@@ -121,29 +122,26 @@ void ACustomer::Wait()
 
 void ACustomer::Check()
 {
-	if (orderSuccess)
+	FRotator endSetRot = FMath::Lerp(GetActorRotation(), endRot, 0.1);
+	SetActorRotation(endSetRot);
+	if (ticktime > 1.0f)
 	{
-		state = ECustomerState::PAYMENT;
-	}
-	else
-	{
-		state = ECustomerState::MOVEOUT;
+		ticktime = 0;
+		if (orderSuccess)
+		{
+			state = ECustomerState::PAYMENT;
+		}
+		else
+		{
+			state = ECustomerState::MOVEOUT;
+		}
 	}
 }
 
 void ACustomer::Payment()
 {
 	UE_LOG(LogTemp, Warning, TEXT("100$"));
-	FVector endSetLoc = FMath::Lerp(GetActorLocation(), endLoc, 0.1);
-	FRotator endSetRot = FMath::Lerp(GetActorRotation(), endRot, 0.1);
-	SetActorLocation(endSetLoc);
-	SetActorRotation(endSetRot);
-	if (ticktime > 1.0f)
-	{
-		ticktime = 0;
-		UE_LOG(LogTemp, Warning, TEXT("Success"));
-		state = ECustomerState::MOVEOUT;
-	}
+	state = ECustomerState::MOVEOUT;
 }
 
 void ACustomer::MoveOut()
