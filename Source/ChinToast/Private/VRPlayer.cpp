@@ -109,6 +109,8 @@ void AVRPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 	{
 		input->BindAction(IA_Move, ETriggerEvent::Triggered, this, &AVRPlayer::OnIAMove);
 		input->BindAction(IA_Turn, ETriggerEvent::Triggered, this, &AVRPlayer::OnIATurn);
+		input->BindAction(IA_Grab_Left, ETriggerEvent::Started, this, &AVRPlayer::OnIAGrab_Left);
+		input->BindAction(IA_Grab_Right, ETriggerEvent::Started, this, &AVRPlayer::OnIAGrab_Right);
 	}
 	
 }
@@ -131,12 +133,13 @@ void AVRPlayer::OnIATurn(const FInputActionValue& value)
 
 void AVRPlayer::OnIAGrab_Left(const FInputActionValue& value)
 {
-
+	UE_LOG(LogTemp,Warning,TEXT("aseeas"));
 }
 
 void AVRPlayer::OnIAGrab_Right(const FInputActionValue& value)
 {
 
+	UE_LOG(LogTemp, Warning, TEXT("ESAASEAS"));
 }
 
 
