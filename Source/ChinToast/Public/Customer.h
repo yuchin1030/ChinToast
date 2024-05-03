@@ -53,8 +53,10 @@ public:
 	ECustomerState state = ECustomerState::IDLE;
 
 	// 주문할 샌드위치 레시피 재료 순서
+	class AChinToastRecipe* recipe;
+
 	UPROPERTY(EditAnywhere, Category = "Setting")
-	TArray<UStaticMesh*> recipe;
+	TArray<FString> currentrecipe;
 
 	// 고객 종류(매쉬 타입)
 	UPROPERTY(EditAnywhere, Category = "Setting")

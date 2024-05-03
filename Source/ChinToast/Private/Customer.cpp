@@ -1,11 +1,12 @@
 
 
 #include "Customer.h"
+#include <ChinToastRecipe.h>
+#include <../../../../../../../Source/Runtime/Engine/Public/EngineUtils.h>
 
 ACustomer::ACustomer()
 {
 	PrimaryActorTick.bCanEverTick = true;
-
 
 
 }
@@ -18,6 +19,19 @@ void ACustomer::BeginPlay()
 
 	startLoc = GetActorLocation();
 	startRot = GetActorRotation();
+
+	
+	for (TActorIterator<AChinToastRecipe> toast(GetWorld()); toast; ++toast)
+	{
+		recipe = *toast;
+	}
+
+
+	if (recipe == nullptr)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("UUUUUUU"));
+	}
+	
 }
 
 void ACustomer::Tick(float DeltaTime)
@@ -106,8 +120,15 @@ void ACustomer::MoveIn()
 void ACustomer::Order()
 {	
 	ticktime = 0;
+	recipe->SetRandomMenu();
+	for (int32 i = 0; i < recipe->makedRecipe.Num(); i++)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("%s"), *recipe->makedRecipe[i]);
+	}
+
 	UE_LOG(LogTemp, Warning, TEXT("Order"));
 	state = ECustomerState::ORDERDELAY;
+
 }
 
 void ACustomer::Wait()
