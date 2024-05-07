@@ -4,7 +4,32 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include <Engine/DataTable.h>
 #include "ChinToastRecipe.generated.h"
+
+USTRUCT(BlueprintType)
+struct FFoodData:public FTableRowBase
+{
+	GENERATED_BODY()
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Data")
+	FString D_menu;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Data")
+	FString D_material1;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Data")
+	FString D_material2;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Data")
+	FString D_material3;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Data")
+	FString D_material4;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Data")
+	FString D_material5;
+};
 
 UCLASS()
 class CHINTOAST_API AChinToastRecipe : public AActor
@@ -28,6 +53,7 @@ public:
 	TArray<FString> recipe3;
 	TArray<FString> recipe4;
 	TArray<FString> recipe5;
+	TArray<FString> recipe6;
 
 	UStaticMesh* GetRecipe(FString metarialname);
 	void SetRandomMenu();

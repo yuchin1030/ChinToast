@@ -81,6 +81,27 @@ public:
 	UPROPERTY(EditAnywhere, Category = "Setting")
 	bool orderSuccess = false;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Data")
+	FString menu;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Data")
+	FString material1;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Data")
+	FString material2;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Data")
+	FString material3;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Data")
+	FString material4;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Data")
+	FString material5;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Data")
+	class UDataTable* foodData;
+
 private:
 
 	FVector startLoc;

@@ -8,7 +8,12 @@ ACustomer::ACustomer()
 {
 	PrimaryActorTick.bCanEverTick = true;
 
-
+	/*static ConstructorHelpers::FObjectFinder<UDataTable> FoodData(TEXT("/ Script / Engine.DataTable'/Game/KSW/DT_FoodData.DT_FoodData'"));
+	if (FoodData.Succeeded())
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Data Set"));
+		foodData = FoodData.Object;
+	}*/
 }
 
 void ACustomer::BeginPlay()
@@ -31,6 +36,16 @@ void ACustomer::BeginPlay()
 	{
 		UE_LOG(LogTemp, Warning, TEXT("UUUUUUU"));
 	}
+
+	/*auto list = foodData->GetRowNames();
+	FName RamdomMenu = list[FMath::RandRange(0,4)];
+	FFoodData* selectMenu = foodData->FindRow<FFoodData>(RamdomMenu,FString(""));
+	UE_LOG(LogTemp, Warning, TEXT("%s"), *selectMenu->D_menu);
+	UE_LOG(LogTemp, Warning, TEXT("%s"), *selectMenu->D_material1);
+	UE_LOG(LogTemp, Warning, TEXT("%s"), *selectMenu->D_material2);
+	UE_LOG(LogTemp, Warning, TEXT("%s"), *selectMenu->D_material3);
+	UE_LOG(LogTemp, Warning, TEXT("%s"), *selectMenu->D_material4);
+	UE_LOG(LogTemp, Warning, TEXT("%s"), *selectMenu->D_material5);*/
 	
 }
 
@@ -81,7 +96,7 @@ void ACustomer::RandomCustomerSet()
 	GetMesh()->SetSkeletalMesh(bodys[ranNum]);
 	GetMesh()->SetRelativeLocation(FVector(0,0,-90));
 	GetMesh()->SetRelativeRotation(FRotator(0.0f, -90.0f, 0.0f));
-
+	GetMesh()->SetRelativeScale3D(FVector(1.2f));
 	GetMesh()->SetAnimInstanceClass(customerMoves[ranNum]);
 }
 

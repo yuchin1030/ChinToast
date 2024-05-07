@@ -46,6 +46,7 @@ AChinToastRecipe::AChinToastRecipe()
 	recipe3 = { "VeganToast", "Bread", "Lettuce", "Tomato", "Lettuce", "Bread" };
 	recipe4 = { "DoubleCheeseToast", "Bread", "Hams", "Cheese", "Cheese", "Bread" };
 	recipe5 = { "BLTToast", "Bread", "Hams", "Tomato", "Lettuce", "Bread" };
+	recipe6 = { "MinToast", "Bread", "Bread", "Bread", "Bread", "Bread" };
 
 }
 
