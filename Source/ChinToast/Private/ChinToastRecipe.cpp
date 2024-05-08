@@ -16,6 +16,7 @@ AChinToastRecipe::AChinToastRecipe()
 	ConstructorHelpers::FObjectFinder<UStaticMesh> Hams(TEXT("/Script/Engine.StaticMesh'/Game/Yuchin/YC_Assets/Sandwich_Pieces/Need/Ham3.Ham3'"));
 	ConstructorHelpers::FObjectFinder<UStaticMesh> Lettuce(TEXT("/Script/Engine.StaticMesh'/Game/Yuchin/YC_Assets/Sandwich_Pieces/Need/Lettuce.Lettuce'"));
 	ConstructorHelpers::FObjectFinder<UStaticMesh> Tomato(TEXT("/Script/Engine.StaticMesh'/Game/Yuchin/YC_Assets/Sandwich_Pieces/Need/Tomato.Tomato'"));
+
 	if (Bread.Succeeded())
 	{
 		ingredients.Add(TEXT("Bread"), Bread.Object);
@@ -41,8 +42,40 @@ AChinToastRecipe::AChinToastRecipe()
 		ingredients.Add(TEXT("Tomato"), Tomato.Object);
 	}
 
+	ConstructorHelpers::FObjectFinder<UTexture> Breadimg(TEXT("/Script/Engine.Texture2D'/Game/Yuchin/UI/BreadImg.BreadImg'"));
+	ConstructorHelpers::FObjectFinder<UTexture> Cheeseimg(TEXT("/Script/Engine.Texture2D'/Game/Yuchin/UI/CheeseImg.CheeseImg'"));
+	ConstructorHelpers::FObjectFinder<UTexture> BigHamimg(TEXT("/Script/Engine.Texture2D'/Game/Yuchin/UI/BreadImg.BreadImg'"));
+	ConstructorHelpers::FObjectFinder<UTexture> Hamsimg(TEXT("/Script/Engine.Texture2D'/Game/Yuchin/UI/HamImg.HamImg'"));
+	ConstructorHelpers::FObjectFinder<UTexture> Lettuceimg(TEXT("/Script/Engine.Texture2D'/Game/Yuchin/UI/LettuceImg.LettuceImg'"));
+	ConstructorHelpers::FObjectFinder<UTexture> Tomatoimg(TEXT("/Script/Engine.Texture2D'/Game/Yuchin/UI/TomatoImg.TomatoImg'"));
+
+	if (Breadimg.Succeeded())
+	{
+		foodimage.Add(TEXT("Bread Image"), Breadimg.Object);
+	}
+	if (Cheeseimg.Succeeded())
+	{
+		foodimage.Add(TEXT("Cheese Image"), Cheeseimg.Object);
+	}
+	if (BigHamimg.Succeeded())
+	{
+		foodimage.Add(TEXT("BigHam Image"), BigHamimg.Object);
+	}
+	if (Hamsimg.Succeeded())
+	{
+		foodimage.Add(TEXT("Hams Image"), Hamsimg.Object);
+	}
+	if (Lettuceimg.Succeeded())
+	{
+		foodimage.Add(TEXT("Lettuce Image"), Lettuceimg.Object);
+	}
+	if (Tomatoimg.Succeeded())
+	{
+		foodimage.Add(TEXT("Tomato Image"), Tomatoimg.Object);
+	}
+
 	recipe1 = { "ChinToast", "Bread", "Hams", "Cheese", "Lettuce", "Bread"};
-	recipe2 = { "TripleHamToast", "Bread", "BigHam", "BigHam", "BigHam", "Bread" };
+	recipe2 = { "TripleHamToast", "Bread", "Hams", "Hams", "Hams", "Bread" };
 	recipe3 = { "VeganToast", "Bread", "Lettuce", "Tomato", "Lettuce", "Bread" };
 	recipe4 = { "DoubleCheeseToast", "Bread", "Hams", "Cheese", "Cheese", "Bread" };
 	recipe5 = { "BLTToast", "Bread", "Hams", "Tomato", "Lettuce", "Bread" };
