@@ -42,12 +42,12 @@ AChinToastRecipe::AChinToastRecipe()
 		ingredients.Add(TEXT("Tomato"), Tomato.Object);
 	}
 
-	ConstructorHelpers::FObjectFinder<UTexture> Breadimg(TEXT("/Script/Engine.Texture2D'/Game/Yuchin/UI/BreadImg.BreadImg'"));
-	ConstructorHelpers::FObjectFinder<UTexture> Cheeseimg(TEXT("/Script/Engine.Texture2D'/Game/Yuchin/UI/CheeseImg.CheeseImg'"));
-	ConstructorHelpers::FObjectFinder<UTexture> BigHamimg(TEXT("/Script/Engine.Texture2D'/Game/Yuchin/UI/BreadImg.BreadImg'"));
-	ConstructorHelpers::FObjectFinder<UTexture> Hamsimg(TEXT("/Script/Engine.Texture2D'/Game/Yuchin/UI/HamImg.HamImg'"));
-	ConstructorHelpers::FObjectFinder<UTexture> Lettuceimg(TEXT("/Script/Engine.Texture2D'/Game/Yuchin/UI/LettuceImg.LettuceImg'"));
-	ConstructorHelpers::FObjectFinder<UTexture> Tomatoimg(TEXT("/Script/Engine.Texture2D'/Game/Yuchin/UI/TomatoImg.TomatoImg'"));
+	ConstructorHelpers::FObjectFinder<UTexture2D> Breadimg(TEXT("/Script/Engine.Texture2D'/Game/Yuchin/UI/BreadImg.BreadImg'"));
+	ConstructorHelpers::FObjectFinder<UTexture2D> Cheeseimg(TEXT("/Script/Engine.Texture2D'/Game/Yuchin/UI/CheeseImg.CheeseImg'"));
+	ConstructorHelpers::FObjectFinder<UTexture2D> BigHamimg(TEXT("/Script/Engine.Texture2D'/Game/Yuchin/UI/BreadImg.BreadImg'"));
+	ConstructorHelpers::FObjectFinder<UTexture2D> Hamsimg(TEXT("/Script/Engine.Texture2D'/Game/Yuchin/UI/HamImg.HamImg'"));
+	ConstructorHelpers::FObjectFinder<UTexture2D> Lettuceimg(TEXT("/Script/Engine.Texture2D'/Game/Yuchin/UI/LettuceImg.LettuceImg'"));
+	ConstructorHelpers::FObjectFinder<UTexture2D> Tomatoimg(TEXT("/Script/Engine.Texture2D'/Game/Yuchin/UI/TomatoImg.TomatoImg'"));
 
 	if (Breadimg.Succeeded())
 	{

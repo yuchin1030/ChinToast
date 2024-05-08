@@ -49,7 +49,7 @@ public:
 	TArray <UAnimMontage*> thanks;
 
 	// FSM 상태변수
-	UPROPERTY(EditDefaultsOnly, Category = "Setting")
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Setting")
 	ECustomerState state = ECustomerState::IDLE;
 
 	// 주문할 샌드위치 레시피 재료 순서
