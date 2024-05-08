@@ -46,7 +46,8 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	TMap<FString, UStaticMesh*> ingredients; 
-
+	TMap<FString, UTexture*> foodimage;
+	
 	TArray<FString> makedRecipe;
 	TArray<FString> recipe1;
 	TArray<FString> recipe2;
