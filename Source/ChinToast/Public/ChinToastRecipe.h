@@ -61,6 +61,8 @@ public:
 	TArray<FString> recipe6;
 
 	UStaticMesh* GetRecipe(FString metarialname);
+
+	UFUNCTION(BlueprintCallable)
 	void SetRandomMenu();
 
 	
