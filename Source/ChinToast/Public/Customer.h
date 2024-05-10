@@ -78,7 +78,7 @@ public:
 	UPROPERTY(EditAnywhere, Category = "Setting")
 	FRotator endRot = FRotator::ZeroRotator;
 
-	UPROPERTY(EditAnywhere, Category = "Setting")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Setting")
 	bool orderSuccess = false;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Data")
@@ -101,6 +101,9 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Data")
 	class UDataTable* foodData;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Data")
+	bool getfood = false;
 
 private:
 

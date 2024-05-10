@@ -148,7 +148,7 @@ void ACustomer::Order()
 
 void ACustomer::Wait()
 {
-	if (ticktime > 10.0f)
+	if (getfood || ticktime > 60.0f)
 	{
 		ticktime = 0;
 		UE_LOG(LogTemp, Warning, TEXT("Time Over"));
@@ -196,5 +196,7 @@ void ACustomer::MoveOut()
 
 		state = ECustomerState::IDLE;
 	}
+	getfood = false;
+	orderSuccess = false;
 }
 
