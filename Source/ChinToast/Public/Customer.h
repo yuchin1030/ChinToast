@@ -48,6 +48,9 @@ public:
 	UPROPERTY(EditDefaultsOnly, Category = "Setting")
 	TArray <UAnimMontage*> thanks;
 
+	UPROPERTY(EditDefaultsOnly, Category = "Setting")
+	TArray <USoundBase*> response;
+
 	// FSM 상태변수
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Setting")
 	ECustomerState state = ECustomerState::IDLE;
@@ -107,9 +110,11 @@ public:
 
 private:
 
+	int32 ranNum;
 	FVector startLoc;
 	FRotator startRot;
 	float ticktime = 0.0f;
+	float walkSpeed = 10;
 	
 	void RandomCustomerSet();
 

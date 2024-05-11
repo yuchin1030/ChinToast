@@ -3,6 +3,8 @@
 #include "Customer.h"
 #include <ChinToastRecipe.h>
 #include <../../../../../../../Source/Runtime/Engine/Public/EngineUtils.h>
+#include <../../../../../../../Source/Runtime/Engine/Classes/Kismet/GameplayStatics.h>
+#include <../../../../../../../Source/Runtime/Engine/Classes/GameFramework/CharacterMovementComponent.h>
 
 ACustomer::ACustomer()
 {
@@ -91,18 +93,19 @@ void ACustomer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 
 void ACustomer::RandomCustomerSet()
 {
-	int32 ranNum = FMath::RandRange(0, 2);
+	ranNum = FMath::RandRange(0, 2);
 
 	GetMesh()->SetSkeletalMesh(bodys[ranNum]);
 	GetMesh()->SetRelativeLocation(FVector(0,0,-90));
 	GetMesh()->SetRelativeRotation(FRotator(0.0f, -90.0f, 0.0f));
 	GetMesh()->SetRelativeScale3D(FVector(1.2f));
 	GetMesh()->SetAnimInstanceClass(customerMoves[ranNum]);
+	walkSpeed = -1 * (ranNum - 3);
 }
 
 void ACustomer::Idle()
 {
-	if (ticktime > 3.0f)
+	if (ticktime > 1.0f)
 	{
 		ticktime = 0;
 		state = ECustomerState::MOVEIN;
@@ -114,7 +117,7 @@ void ACustomer::MoveIn()
 	if (FVector::Distance(GetActorLocation(), moveLoc) > 100.0f)
 	{
 		FVector moveDir = (moveLoc - GetActorLocation()).GetSafeNormal();
-		SetActorLocation(GetActorLocation() + moveDir, true);
+		SetActorLocation(GetActorLocation() + moveDir * walkSpeed, true);
 		ticktime = 0;
 	}
 	else
@@ -165,10 +168,13 @@ void ACustomer::Check()
 		ticktime = 0;
 		if (orderSuccess)
 		{
+			UGameplayStatics::PlaySound2D(this, response[0]);
+			PlayAnimMontage(thanks[ranNum]);
 			state = ECustomerState::PAYMENT;
 		}
 		else
 		{
+			UGameplayStatics::PlaySound2D(this, response[1]);
 			state = ECustomerState::MOVEOUT;
 		}
 	}
@@ -185,7 +191,7 @@ void ACustomer::MoveOut()
 	if (FVector::Distance(GetActorLocation(), endLoc) > 100.0f)
 	{
 		FVector endDir = (endLoc - GetActorLocation()).GetSafeNormal();
-		SetActorLocation(GetActorLocation() + endDir, true);
+		SetActorLocation(GetActorLocation() + endDir * walkSpeed, true);
 		ticktime = 0;
 	}
 	else
@@ -193,7 +199,6 @@ void ACustomer::MoveOut()
 		SetActorLocation(startLoc);
 		SetActorRotation(startRot);
 		RandomCustomerSet();
-
 		state = ECustomerState::IDLE;
 	}
 	getfood = false;
