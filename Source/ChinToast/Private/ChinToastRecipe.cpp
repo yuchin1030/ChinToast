@@ -74,12 +74,12 @@ AChinToastRecipe::AChinToastRecipe()
 		foodimage.Add(TEXT("Tomato Image"), Tomatoimg.Object);
 	}
 
-	recipe1 = { "ChinToast", "Bread", "Hams", "Cheese", "Lettuce", "Bread"};
-	recipe2 = { "TripleHamToast", "Bread", "Hams", "Hams", "Hams", "Bread" };
-	recipe3 = { "VeganToast", "Bread", "Lettuce", "Tomato", "Lettuce", "Bread" };
-	recipe4 = { "DoubleCheeseToast", "Bread", "Hams", "Cheese", "Cheese", "Bread" };
-	recipe5 = { "BLTToast", "Bread", "Hams", "Tomato", "Lettuce", "Bread" };
-	recipe6 = { "MinToast", "Bread", "Bread", "Bread", "Bread", "Bread" };
+	recipe1 = { "Chin Toast", "Bread", "Hams", "Cheese", "Lettuce", "Bread"};
+	recipe2 = { "Triple Ham Toast", "Bread", "Hams", "Hams", "Hams", "Bread" };
+	recipe3 = { "Vegan Toast", "Bread", "Lettuce", "Tomato", "Lettuce", "Bread" };
+	recipe4 = { "Double Cheese Toast", "Bread", "Hams", "Cheese", "Cheese", "Bread" };
+	recipe5 = { "BLT Toast", "Bread", "Hams", "Tomato", "Lettuce", "Bread" };
+	recipe6 = { "Min Toast", "Bread", "Bread", "Bread", "Bread", "Bread" };
 
 }
 
