@@ -100,7 +100,7 @@ void ACustomer::RandomCustomerSet()
 	GetMesh()->SetRelativeRotation(FRotator(0.0f, -90.0f, 0.0f));
 	GetMesh()->SetRelativeScale3D(FVector(1.2f));
 	GetMesh()->SetAnimInstanceClass(customerMoves[ranNum]);
-	walkSpeed = -1 * (ranNum - 3);
+	//walkSpeed = 3.0f;
 }
 
 void ACustomer::Idle()
@@ -151,7 +151,7 @@ void ACustomer::Order()
 
 void ACustomer::Wait()
 {
-	if (getfood || ticktime > 60.0f)
+	if (getfood || ticktime > 30.0f)
 	{
 		ticktime = 0;
 		UE_LOG(LogTemp, Warning, TEXT("Time Over"));

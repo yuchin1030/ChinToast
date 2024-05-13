@@ -114,7 +114,7 @@ private:
 	FVector startLoc;
 	FRotator startRot;
 	float ticktime = 0.0f;
-	float walkSpeed = 10;
+	float walkSpeed = 3.0f;
 	
 	void RandomCustomerSet();
 
