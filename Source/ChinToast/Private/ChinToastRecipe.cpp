@@ -10,12 +10,12 @@ AChinToastRecipe::AChinToastRecipe()
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
-	ConstructorHelpers::FObjectFinder<UStaticMesh> Bread(TEXT("/Script/Engine.StaticMesh'/Game/Yuchin/YC_Assets/Sandwich_Pieces/Need/Bread.Bread'"));
-	ConstructorHelpers::FObjectFinder<UStaticMesh> Cheese(TEXT("/Script/Engine.StaticMesh'/Game/Yuchin/YC_Assets/Sandwich_Pieces/Need/Cheese.Cheese'"));
+	ConstructorHelpers::FObjectFinder<UStaticMesh> Bread(TEXT("/Script/Engine.Texture2D'/Game/BJK/UI/PNG/Menu/Bread.Bread'"));
+	ConstructorHelpers::FObjectFinder<UStaticMesh> Cheese(TEXT("/Script/Engine.Texture2D'/Game/BJK/UI/PNG/Menu/Cheese.Cheese'"));
 	ConstructorHelpers::FObjectFinder<UStaticMesh> BigHam(TEXT("/Script/Engine.StaticMesh'/Game/Yuchin/YC_Assets/Sandwich_Pieces/Need/Ham.Ham'"));
-	ConstructorHelpers::FObjectFinder<UStaticMesh> Hams(TEXT("/Script/Engine.StaticMesh'/Game/Yuchin/YC_Assets/Sandwich_Pieces/Need/Ham3.Ham3'"));
-	ConstructorHelpers::FObjectFinder<UStaticMesh> Lettuce(TEXT("/Script/Engine.StaticMesh'/Game/Yuchin/YC_Assets/Sandwich_Pieces/Need/Lettuce.Lettuce'"));
-	ConstructorHelpers::FObjectFinder<UStaticMesh> Tomato(TEXT("/Script/Engine.StaticMesh'/Game/Yuchin/YC_Assets/Sandwich_Pieces/Need/Tomato.Tomato'"));
+	ConstructorHelpers::FObjectFinder<UStaticMesh> Hams(TEXT("/Script/Engine.Texture2D'/Game/BJK/UI/PNG/Menu/Ham.Ham'"));
+	ConstructorHelpers::FObjectFinder<UStaticMesh> Lettuce(TEXT("/Script/Engine.Texture2D'/Game/BJK/UI/PNG/Menu/Lettuce.Lettuce'"));
+	ConstructorHelpers::FObjectFinder<UStaticMesh> Tomato(TEXT("/Script/Engine.Texture2D'/Game/BJK/UI/PNG/Menu/Tomato.Tomato'"));
 
 	if (Bread.Succeeded())
 	{
@@ -42,12 +42,12 @@ AChinToastRecipe::AChinToastRecipe()
 		ingredients.Add(TEXT("Tomato"), Tomato.Object);
 	}
 
-	ConstructorHelpers::FObjectFinder<UTexture2D> Breadimg(TEXT("/Script/Engine.Texture2D'/Game/Yuchin/UI/BreadImg.BreadImg'"));
-	ConstructorHelpers::FObjectFinder<UTexture2D> Cheeseimg(TEXT("/Script/Engine.Texture2D'/Game/Yuchin/UI/CheeseImg.CheeseImg'"));
+	ConstructorHelpers::FObjectFinder<UTexture2D> Breadimg(TEXT("/Script/Engine.Texture2D'/Game/BJK/UI/PNG/Menu/Bread.Bread'"));
+	ConstructorHelpers::FObjectFinder<UTexture2D> Cheeseimg(TEXT("/Script/Engine.Texture2D'/Game/BJK/UI/PNG/Menu/Cheese.Cheese'"));
 	ConstructorHelpers::FObjectFinder<UTexture2D> BigHamimg(TEXT("/Script/Engine.Texture2D'/Game/Yuchin/UI/BreadImg.BreadImg'"));
-	ConstructorHelpers::FObjectFinder<UTexture2D> Hamsimg(TEXT("/Script/Engine.Texture2D'/Game/Yuchin/UI/HamImg.HamImg'"));
-	ConstructorHelpers::FObjectFinder<UTexture2D> Lettuceimg(TEXT("/Script/Engine.Texture2D'/Game/Yuchin/UI/LettuceImg.LettuceImg'"));
-	ConstructorHelpers::FObjectFinder<UTexture2D> Tomatoimg(TEXT("/Script/Engine.Texture2D'/Game/Yuchin/UI/TomatoImg.TomatoImg'"));
+	ConstructorHelpers::FObjectFinder<UTexture2D> Hamsimg(TEXT("/Script/Engine.Texture2D'/Game/BJK/UI/PNG/Menu/Ham.Ham'"));
+	ConstructorHelpers::FObjectFinder<UTexture2D> Lettuceimg(TEXT("/Script/Engine.Texture2D'/Game/BJK/UI/PNG/Menu/Lettuce.Lettuce'"));
+	ConstructorHelpers::FObjectFinder<UTexture2D> Tomatoimg(TEXT("/Script/Engine.Texture2D'/Game/BJK/UI/PNG/Menu/Tomato.Tomato'"));
 
 	if (Breadimg.Succeeded())
 	{
