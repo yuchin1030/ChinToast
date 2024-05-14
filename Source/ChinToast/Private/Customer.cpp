@@ -94,6 +94,12 @@ void ACustomer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 
 }
 
+void ACustomer::UpdateWaitingNum()
+{
+	waitingNum -= 1;
+	state = ECustomerState::MOVEIN;
+}
+
 void ACustomer::RandomCustomerSet()
 {
 	ranNum = FMath::RandRange(0, 2);
@@ -223,8 +229,10 @@ void ACustomer::MoveOut()
 		SetActorRotation(startRot);
 		RandomCustomerSet();
 		state = ECustomerState::IDLE;
+		waitingNum = 2;
 	}
 	getfood = false;
 	orderSuccess = false;
+
 }
 

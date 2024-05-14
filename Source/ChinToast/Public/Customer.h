@@ -115,6 +115,8 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Data")
 	TArray<FVector> waitingLoc;
 
+	UFUNCTION(BlueprintCallable)
+	void UpdateWaitingNum();
 private:
 
 	int32 ranNum;
