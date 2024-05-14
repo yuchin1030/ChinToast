@@ -10,6 +10,7 @@ enum class ECustomerState : uint8
 {
 	IDLE		UMETA(DisplayName = "Idle State"),
 	MOVEIN		UMETA(DisplayName = "Move In State"),
+	WAITING		UMETA(DisplayName = "OrderWait State"),
 	ORDER		UMETA(DisplayName = "Order State"),
 	ORDERDELAY	UMETA(DisplayName = "Order Delay State"),
 	CHECK		UMETA(DisplayName = "Check State"),
@@ -108,6 +109,12 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Data")
 	bool getfood = false;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Data")
+	int32 waitingNum = 0;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Data")
+	TArray<FVector> waitingLoc;
+
 private:
 
 	int32 ranNum;
@@ -120,6 +127,7 @@ private:
 
 	void Idle();
 	void MoveIn();
+	void OrderWait();
 	void Order();
 	void Wait();
 	void Check();

@@ -65,6 +65,9 @@ void ACustomer::Tick(float DeltaTime)
 	case ECustomerState::MOVEIN:
 		MoveIn();
 		break;
+	case ECustomerState::WAITING:
+		OrderWait();
+		break;
 	case ECustomerState::ORDER:
 		Order();
 		break;
@@ -114,6 +117,8 @@ void ACustomer::Idle()
 
 void ACustomer::MoveIn()
 {
+	moveLoc = waitingLoc[waitingNum];
+	
 	if (FVector::Distance(GetActorLocation(), moveLoc) > 100.0f)
 	{
 		FVector moveDir = (moveLoc - GetActorLocation()).GetSafeNormal();
@@ -122,17 +127,35 @@ void ACustomer::MoveIn()
 	}
 	else
 	{
-		FVector MoveSetLoc = FMath::Lerp(GetActorLocation(),moveLoc, 0.1);
-		FRotator MoveSetRot = FMath::Lerp(GetActorRotation(), moveRot, 0.1);
+		FVector MoveSetLoc = FMath::Lerp(GetActorLocation(), moveLoc, 0.1);
 		SetActorLocation(MoveSetLoc);
-		SetActorRotation(MoveSetRot);
+		if (waitingNum == 0)
+		{
+			FRotator MoveSetRot = FMath::Lerp(GetActorRotation(), moveRot, 0.1);
+			SetActorRotation(MoveSetRot);
+		}
 		if (ticktime > 0.5f)
 		{
+			UE_LOG(LogTemp, Warning, TEXT("Success: %d"), waitingNum);
 			ticktime = 0;
-			UE_LOG(LogTemp,Warning,TEXT("Success"));
-			state = ECustomerState::ORDER;
+			//UE_LOG(LogTemp,Warning,TEXT("Success"));
+			if (waitingNum == 0)
+			{
+				state = ECustomerState::ORDER;
+			}
+			else
+			{
+				state = ECustomerState::WAITING;
+			}
 		}
 	}
+	
+}
+
+void ACustomer::OrderWait()
+{
+	FVector MoveSetLoc = FMath::Lerp(GetActorLocation(), moveLoc, 0.1);
+	SetActorLocation(MoveSetLoc);
 }
 
 void ACustomer::Order()
